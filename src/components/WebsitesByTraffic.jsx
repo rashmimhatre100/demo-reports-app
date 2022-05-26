@@ -37,9 +37,9 @@ function WebsitesByTraffic() {
 
   const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
 
-  const getConvertedDateString = () => {
-    return moment(date).format("DD/MM/YYYY");
-  };
+  // const getConvertedDateString = () => {
+  //   return moment(date).format("DD/MM/YYYY");
+  // };
 
   useEffect(() => {
     fetch(CSVContent)
@@ -48,7 +48,7 @@ function WebsitesByTraffic() {
         const jsonData = CSVToJSON(text);
 
         const filteredData = jsonData.filter((site) => {
-          return site.date === getConvertedDateString();
+          return site.date === moment(date).format("DD/MM/YYYY");
         });
         setRowData(
           filteredData
